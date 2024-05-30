@@ -1,0 +1,35 @@
+/* UserCard.css */
+.user-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    max-width: 300px;
+    box-shadow: 0 4px 6px rgba(179, 28, 28, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .user-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .user-card__image {
+    width: 100%;
+    height: auto;
+  }
+  
+  .user-card__details {
+    padding: 16px;
+  }
+  
+  .user-card__name {
+    margin: 0;
+    font-size: 1.5em;
+    color: #c41818;
+  }
+  
+  .user-card__occupation {
+    margin: 8px 0 0;
+    font-size: 1em;
+    color: #777;
+  }
+  
