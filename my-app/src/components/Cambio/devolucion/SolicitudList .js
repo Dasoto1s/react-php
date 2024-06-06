@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import SideMenu from './SideMenu';
-import '../CSS/SolicitudList.css';
+import SideMenu from '../../SideMenu';
+import '../../../CSS/SolicitudList.css';
 import { Link } from 'react-router-dom';
 
 const SolicitudList = () => {

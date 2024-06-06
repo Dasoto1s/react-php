@@ -1,24 +1,34 @@
 import React from 'react';
 import '../CSS/SolicitudList.css';
-
-// Importa la imagen de la carpeta Imagenes
+import { Link } from 'react-router-dom';
 import perfilImagen from '../Imagenes/foto perfil.webp';
 
 const SideMenu = () => {
+  const handleLogout = () => {
+    const confirmacion = window.confirm('¿Estás seguro de que deseas cerrar sesión?');
+    if (confirmacion) {
+      // Eliminar el token del almacenamiento local
+      localStorage.removeItem('token');
+      // Redirigir al usuario a la página de inicio de sesión
+      window.location.href = '/admin/login';
+    }
+  };
+
   return (
     <div className="menu">
       <div className="perfil">
-        {/* Utiliza la variable importada como valor del atributo src */}
         <img src={perfilImagen} alt="Perfil del administrador" />
         <p>Nombre del Administrador</p>
       </div>
       <ul className="opciones">
-        <li><a href="inicioAdmin.html" id="gestionarInventario">Gestionar Inventario</a></li>
-        <li><a href="gestionPerfiles.html" id="gestionarPerfiles">Gestionar Perfiles</a></li>
-        <li><a href="gestionarCambiosDevoluciones.html" id="devolucionesCambios">Devoluciones / Cambios</a></li>
-        <li><a href="gestionarbannerDestacados.html" id="publicidadDestacados">Banner / Destacados</a></li>
-        <li><a href="gestionarPedidos.html" id="pedidos">Pedidos</a></li>
-        <li><a href="index.html" id="verTienda" target="_blank">Ver Tienda</a></li>
+        <li><Link to="/gestionarInventario">Gestionar Inventario</Link></li>
+        <li><Link to="/gestionarCambiosDevoluciones">Devoluciones / Cambios</Link></li>
+        <li><Link to="/gestionarbannerDestacados">Promociones</Link></li>
+        <li><Link to="/destacados">Destacados</Link></li>
+        <li><Link to="/banner">Banner</Link></li>
+        <li><Link to="/pedidos">Pedidos</Link></li>
+        <li><a href="index.html" id="verTienda" target="_blank" rel="noopener noreferrer">Ver Tienda</a></li>
+        <li><Link to="#" onClick={handleLogout}>Cerrar Sesión</Link></li>
       </ul>
     </div>
   );

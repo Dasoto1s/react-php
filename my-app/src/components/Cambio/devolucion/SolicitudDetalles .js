@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
-import '../CSS/SolicitudDetalles.css';
+import '../../../CSS/SolicitudDetalles.css';
 
 const SolicitudDetalles = () => {
   const { solicitudId } = useParams();
@@ -10,7 +10,7 @@ const SolicitudDetalles = () => {
 
   useEffect(() => {
     const fetchSolicitud = async () => {
-      if (solicitudId) {
+      if (solicitudId && !solicitud) {
         try {
           const response = await axios.get(`http://localhost:8080/solicitud/${solicitudId}`);
           setSolicitud(response.data);
@@ -21,7 +21,7 @@ const SolicitudDetalles = () => {
       }
     };
     fetchSolicitud();
-  }, [solicitudId]);
+  }, [solicitudId, solicitud]);
 
   const handleCambiarEstado = () => {
     const nuevoEstado = estadoSolicitud === '0' ? '1' : '0';
@@ -77,11 +77,11 @@ const SolicitudDetalles = () => {
       </div>
       <div className="detalle-fila">
         <div className="detalle-celda">Correo del cliente:</div>
-        <div className="detalle-valor">{solicitud.correo_cliente}</div>
+        <div className="detalle-valor">{solicitud.Correo_Cliente}</div>
       </div>
       <div className="detalle-fila">
         <div className="detalle-celda">Tipo de solicitud:</div>
-        <div className="detalle-valor">{solicitud.tipo_solicitud}</div>
+        <div className="detalle-valor">{solicitud.Tipo_solicitud}</div>
       </div>
       <div className="detalle-fila">
         <div className="detalle-celda">Nombre del cliente:</div>
